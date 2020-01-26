@@ -1,0 +1,10 @@
+.tab {
+
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap:wrap;
+    width:100%
+}
