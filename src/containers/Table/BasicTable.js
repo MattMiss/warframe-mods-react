@@ -1,17 +1,13 @@
 import React, {Component} from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
-import data from '../../warframe_mods.json';
-import Cell from '../../component/Cell/Cell';
 
+import Cell from '../../component/Cell/DescCell';
 
-const rowStyle = (row, rowIndex, some, somet) => {
-    console.log("Something")
-};
 
 class BasicTable extends Component {
   
     state = {
-        mods: [...data],
+        mods: this.props.data,
         columns: [{
             dataField: 'name',
             text: 'Name',
@@ -20,7 +16,7 @@ class BasicTable extends Component {
             dataField: 'description',
             text: 'Description',
             sort: true,
-            formatter: (cell, row, rowIndex, formatExtraData) => {
+            formatter: (cell) => {
                 return (
                     <Cell contents = {cell}/>
                 );
@@ -39,18 +35,18 @@ class BasicTable extends Component {
             sort: true
         }]
     }
-    
+
     
     render() {
         return (
-            <div className="container" style={{ marginTop: 50 }}>
+            this.props.show ? <div className="container" style={{ marginTop: 50 }}>
                 <BootstrapTable 
                 striped
                 hover
                 keyField='name' 
                 data={ this.state.mods } 
                 columns={ this.state.columns }/>
-            </div>
+            </div> : null
         );
     }
 }
